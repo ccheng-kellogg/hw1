@@ -111,7 +111,78 @@
 .headers off
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
--- TODO!
+
+DROP TABLE if EXISTS movies;
+DROP TABLE if EXISTS studios;
+DROP TABLE if EXISTS actors;
+DROP TABLE if EXISTS movie_casts;
+
+
+CREATE TABLE studios (
+studios_id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT
+);
+
+CREATE TABLE movies (
+movies_id INTEGER PRIMARY KEY AUTOINCREMENT,
+title TEXT, 
+year_released TEXT,
+mpaa_rating TEXT,
+studios_id INTEGER
+);
+
+CREATE TABLE actors (
+actors_id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT
+);
+
+CREATE TABLE movie_casts (
+movie_casts_id INTEGER PRIMARY KEY AUTOINCREMENT,
+movies_id INTEGER,
+actors_id INTEGER,
+character_name TEXT
+);
+
+INSERT INTO studios (name) VALUES ('Warner Bros');
+
+INSERT INTO movies (title, year_released, mpaa_rating, studios_id) 
+VALUES ('Batman Begins', '2005', 'PG-13', 1),
+('The Dark Knight', '2008', 'PG-13', 1), 
+('The Dark Night Rises', '2012', 'PG-13', 1);
+
+INSERT INTO actors (name) 
+VALUES ('Christian Bale'),
+('Michael Caine'),
+('Liam Neeson'),
+('Katie Holmes'),
+('Gary Oldman'),
+('Heath Ledger'),
+('Aaron Eckhart'),
+('Maggie Gyllenhaal'),
+('Tom Hardy'),
+('Joseph Gordon-Levitt'),
+('Anne Hathaway');
+
+INSERT INTO movie_casts (movies_id, actors_id, character_name) 
+VALUES 
+(1, 1, 'Bruce Wayne'),
+(1, 2, 'Alfred'),
+(1, 3, 'Ra\s Al Ghul'),
+(1, 4, 'Rachel Dawes'),
+(1, 5, 'Commissioner Gordon'),
+(2, 1, 'Bruce Wayne'),
+(2, 6, 'Joker'),
+(2, 7, 'Harvey Dent'),
+(2, 2, 'Alfred'),
+(2, 8, 'Rachel Dawes'),
+(3, 1, 'Bruce Wayne'),
+(3, 5, 'Commissioner Gordon'),
+(3, 9, 'Bane'),
+(3, 10, 'John Blake'),
+(3, 11, 'Selina Kyle');
+
+ 
+
 
 -- Create new tables, according to your domain model
 -- TODO!
@@ -137,3 +208,5 @@
 
 -- The SQL statement for the cast output
 -- TODO!
+
+
