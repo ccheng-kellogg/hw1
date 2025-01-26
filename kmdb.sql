@@ -117,7 +117,7 @@ DROP TABLE if EXISTS studios;
 DROP TABLE if EXISTS actors;
 DROP TABLE if EXISTS movie_casts;
 
-
+-- Create new tables, according to your domain model
 CREATE TABLE studios (
 studios_id INTEGER PRIMARY KEY AUTOINCREMENT,
 name TEXT
@@ -142,6 +142,9 @@ movies_id INTEGER,
 actors_id INTEGER,
 character_name TEXT
 );
+
+-- Insert data into your database that reflects the sample data shown above
+-- Use hard-coded foreign key IDs when necessary
 
 INSERT INTO studios (name) VALUES ('Warner Bros');
 
@@ -180,16 +183,6 @@ VALUES
 (3, 9, 'Bane'),
 (3, 10, 'John Blake'),
 (3, 11, 'Selina Kyle');
-
- 
-
-
--- Create new tables, according to your domain model
--- TODO!
-
--- Insert data into your database that reflects the sample data shown above
--- Use hard-coded foreign key IDs when necessary
--- TODO!
 
 -- Prints a header for the movies output
 .print "Movies"
