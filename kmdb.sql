@@ -119,7 +119,7 @@ DROP TABLE if EXISTS movie_casts;
 
 -- Create new tables, according to your domain model
 CREATE TABLE studios (
-studios_id INTEGER PRIMARY KEY AUTOINCREMENT,
+id INTEGER PRIMARY KEY AUTOINCREMENT,
 name TEXT
 );
 
@@ -190,7 +190,11 @@ VALUES
 .print ""
 
 -- The SQL statement for the movies output
--- TODO!
+
+SELECT title, year_released, mpaa_rating, studios.name
+FROM movies
+INNER JOIN studios
+ON movies.studios_id = studios.id;
 
 -- Prints a header for the cast output
 .print ""
@@ -198,8 +202,13 @@ VALUES
 .print "========"
 .print ""
 
-
 -- The SQL statement for the cast output
--- TODO!
+SELECT title, name, character_name
+FROM movies
+INNER JOIN movie_casts
+ON movies.movies_id = movie_casts.movies_id
+INNER JOIN actors
+ON actors.actors_id = movie_casts.actors_id
+ORDER BY title, actors.name;
 
 
